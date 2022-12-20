@@ -8,18 +8,13 @@ const someArr = [
 
 const someSort = (key = 'name', asc = true) => {
     return someArr.sort((a, b) => {
-        if (isNaN(a[key]) || isNaN(b[key])) {
-            const elA = a[key].toLowerCase()
-            const elB = b[key].toLowerCase()
-            if (elA > elB) {
+            if (a[key] > b[key]) {
                 return asc ? 1 : -1
             }
-            if (elB > elA) {
+            if (a[key] < b[key]) {
                 return asc ? -1 : 1
             }
             return 0
-        }
-        return asc ? a[key] - b[key] : b[key] - a[key]
     })
 }
 
