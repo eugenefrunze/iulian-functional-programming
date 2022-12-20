@@ -1,13 +1,32 @@
-// 1. implement map with reduce
-
 const arr = [2, 3, 7, 10]
 
-const mapReplacer = (arr, callback) => {
-  let resArr = []
-  arr.reduce((prev, curr) => {
-    resArr.push(callback(curr))
-  }, 0)
-  return resArr
+// 1. implement map with reduce
+
+Array.prototype.mapReplacer = function(callback) {
+    return this.reduce((acc, curr) => {
+        return acc.concat(callback(curr))
+    }, [])
 }
 
-console.log(mapReplacer(arr, (val) => val + 2))
+const secArr = arr.mapReplacer(el => el + 2)
+
+// console.log(secArr)
+
+// 2. implement filter
+
+Array.prototype.filterReplacer = function (callback) {
+    return this.reduce((acc, curr) => {
+        if(callback(curr)) {
+            return acc.concat(curr)
+        } else {
+            return acc.concat([])
+        }
+        
+    }, [])
+}
+
+const theirdArr = arr.filterReplacer((el) => el > 3)
+
+console.log(theirdArr)
+
+// 3. implement
